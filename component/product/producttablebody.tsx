@@ -4,11 +4,11 @@ export default function productTableBody({data} : IProductTableBodyProps) {
     return (
         <>
             <tr className="align-middle">
-                <td className="col">{data.productName}</td>
-                <td className="col">{data.productSku}</td>
-                <td className="col-1">{data.productQuantity}</td>
-                <td className="col-3">{data.updateDate}</td>
-                <td className="col">
+                <td>{data.productName}</td>
+                <td>{data.productSku}</td>
+                <td>{data.productQuantity}</td>
+                <td>{data.updateDate}</td>
+                <td>
                     <a href="" className="btn btn-primary me-2">
                         <i className="bi bi-pencil-square me-1"></i>
                         รายละเอียด

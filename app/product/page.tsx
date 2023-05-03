@@ -5,6 +5,19 @@ import ProductData from "../../seed/seedProductData";
 import React, { useState } from 'react';
 
 export default function productHome() {
+
+    const [totalPerPage, setTotalPerPage] = React.useState(10);
+
+    const changeTotalPerPage : React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+        setTotalPerPage(Number(event.currentTarget.value));
+    }
+
+    let productPerPage = ProductData;
+    if (totalPerPage !== 0) {
+        productPerPage = productPerPage.slice(0, totalPerPage);
+    }
+
+
     return (
         <div>
             <div className='bg-primary bg-gradient rounded-3 text-center text-light h1 py-2'>
@@ -27,32 +40,34 @@ export default function productHome() {
                 <div className="col text-end">
                     <div className="btn btn-lg btn-primary bg-gradient shadow px-4 mx-2 w-50">
                         <div className="row">
-                            {/* <div className="col-1"></div> */}
                             <div className="col p-0 text-nowrap">
                                 แสดง:
                             </div>
                             <div className="col p-0">
-                                <select className="form-select form-select-sm" aria-label=".form-select-lg example">
+                                <select 
+                                    className="form-select form-select-sm" 
+                                    aria-label=".form-select-lg example"
+                                    onChange={changeTotalPerPage}
+                                >
                                     <option value="10" selected>10</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
-                                    <option value="100">50</option>
-                                    <option value="">All</option>
+                                    <option value="100">100</option>
+                                    <option value="0">All</option>
                                 </select>
                             </div>
                             <div className="col p-0">
                                 รายการ
                             </div>
-                            {/* <div className="col-1"></div> */}
                         </div>
                     </div>
                     <a href="" className="btn btn-lg btn-primary bg-gradient shadow">
-                        <i className="bi bi-database-add"></i>
+                        <i className="bi bi-database-add me-1"></i>
                         เพิ่มสินค้า
                     </a>
                 </div>
             </div>
-            <ProductTable datas={ProductData}></ProductTable>
+            <ProductTable datas={productPerPage}></ProductTable>
         </div>
     );
 }
