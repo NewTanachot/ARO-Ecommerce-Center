@@ -1,7 +1,6 @@
 import SidebarBigBtn from "./sidebarbigbtn";
 import SidebarBtn from "./sidebarbtn";
 
-
 export default function SidebarLayout() {
     return (
         <div className="text-center">

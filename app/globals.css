@@ -28,6 +28,12 @@ a {
   text-decoration: none;
 }
 
+table {
+  display: block;
+  height: 400px;
+  overflow-y: scroll;
+}
+
 .center1 {
     display: block;
     margin: 0 auto;

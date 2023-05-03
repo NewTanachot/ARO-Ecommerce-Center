@@ -1,5 +1,5 @@
 import Image from "next/Image";
-import navbarImg from "../public/next.svg"
+import navbarImg from "../../public/next.svg"
 import Link from "next/link";
 
 export default function NavbarLayout() {

@@ -1,17 +1,13 @@
-import IProductTableBody from "@/Types&Interfaces/IProductTableData";
+import IProductTableBodyProps from "../../Types&Interfaces/IProductTableBodyProps";
 
-interface IProps {
-    data : IProductTableBody
-}
-
-export default function productTableBody({data} : IProps) {
+export default function productTableBody({data} : IProductTableBodyProps) {
     return (
         <>
-            <tr>
+            <tr className="align-middle">
                 <td className="col">{data.productName}</td>
                 <td className="col">{data.productSku}</td>
                 <td className="col-1">{data.productQuantity}</td>
-                <td className="col">{data.updateDate}</td>
+                <td className="col-3">{data.updateDate}</td>
                 <td className="col">
                     <a href="" className="btn btn-primary me-2">
                         <i className="bi bi-pencil-square me-1"></i>
