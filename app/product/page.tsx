@@ -4,7 +4,7 @@ import ProductTable from "../../component/product/producttable";
 import ProductData from "../../seed/seedProductData";
 import React from 'react';
 
-export default function productHome() {
+export default function ProductHome() {
 
     const [productTotalPerPage, setProductTotalPerPage] = React.useState(10);
 

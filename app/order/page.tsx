@@ -1,11 +1,10 @@
 'use client';
 
-import IOrderListData from "../../Types&Interfaces/order/IOrderListData";
 import OrderList from "../../component/order/orderList";
 import OrderData from "../../seed/seedOrderListData";
 import React from 'react';
 
-export default function orderHome() {
+export default function OrderHome() {
 
     const [filterOrder, setOrderFilter] = React.useState("All");
 
@@ -50,7 +49,7 @@ export default function orderHome() {
             </div>
             {
                 FilterData.length > 0 
-                    ? FilterData?.map(data => <OrderList data={data}></OrderList>) 
+                    ? FilterData?.map(data => <OrderList key={data.orderId} data={data}></OrderList>) 
                     : <h2 className="text-center">-ไม่พบรายการ-</h2>
             }
         </>
