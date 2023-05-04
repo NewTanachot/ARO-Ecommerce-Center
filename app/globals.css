@@ -26,13 +26,17 @@ a {
   text-decoration: none;
 }
 
+#sideBarSubBtn:hover {
+    color: #2E2E2E !important;
+}
+
 /* table {
   display: table;
   height: 400px;
   overflow-y: scroll;
 } */
 
-.center1 {
+.center {
     display: block;
     margin: 0 auto;
 }

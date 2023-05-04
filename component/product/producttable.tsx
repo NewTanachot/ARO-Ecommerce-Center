@@ -1,4 +1,4 @@
-import IProductTableProps from "../../Types&Interfaces/IProductTableProps";
+import IProductTableProps from "../../Types&Interfaces/product/IProductTableProps";
 import ProductTableBody from "./producttablebody";
 
 export default function productTable({datas} : IProductTableProps) {
@@ -19,9 +19,9 @@ export default function productTable({datas} : IProductTableProps) {
                         </tr>
                     </thead>
                     <tbody className="text-center">
-                        {datas.map(data => (
-                            <ProductTableBody data={data}></ProductTableBody>
-                        ))}
+                        { 
+                            datas.map(data => <ProductTableBody data={data}></ProductTableBody>) 
+                        }
                     </tbody>
                 </table>
             </div>

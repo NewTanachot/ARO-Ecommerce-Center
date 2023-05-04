@@ -1,4 +1,4 @@
-import IProductTableBodyProps from "../../Types&Interfaces/IProductTableBodyProps";
+import IProductTableBodyProps from "../../Types&Interfaces/product/IProductTableBodyProps";
 
 export default function productTableBody({data} : IProductTableBodyProps) {
     return (

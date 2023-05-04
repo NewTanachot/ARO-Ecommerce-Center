@@ -2,21 +2,22 @@
 
 import ProductTable from "../../component/product/producttable";
 import ProductData from "../../seed/seedProductData";
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function productHome() {
 
-    const [totalPerPage, setTotalPerPage] = React.useState(10);
+    const [productTotalPerPage, setProductTotalPerPage] = React.useState(10);
 
-    const changeTotalPerPage : React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-        setTotalPerPage(Number(event.currentTarget.value));
+    const changeProductTotalPerPage : React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+        setProductTotalPerPage(Number(event.currentTarget.value));
     }
 
     let productPerPage = ProductData;
-    if (totalPerPage !== 0) {
-        productPerPage = productPerPage.slice(0, totalPerPage);
+    if (productTotalPerPage !== 0) {
+        productPerPage = productPerPage.slice(0, productTotalPerPage);
     }
 
+    const productTotal = ProductData.length;
 
     return (
         <div>
@@ -31,7 +32,7 @@ export default function productHome() {
                         แก้ไขสต๊อค
                     </a>
                     <div className='btn btn-lg btn-primary bg-gradient shadow px-4 mx-2'>
-                        จำนวนสินค้า: {ProductData.length} ชิ้น
+                        จำนวนสินค้า: {productTotal} ชิ้น
                     </div>
                     <a href="" className='btn btn-lg btn-outline-danger bg-gradient shadow-sm border-0 fw-bold'>
                         <i className="bi bi-trash3-fill"></i>
@@ -44,11 +45,7 @@ export default function productHome() {
                                 แสดง:
                             </div>
                             <div className="col p-0">
-                                <select 
-                                    className="form-select form-select-sm" 
-                                    aria-label=".form-select-lg example"
-                                    onChange={changeTotalPerPage}
-                                >
+                                <select className="form-select form-select-sm" onChange={changeProductTotalPerPage}>
                                     <option value="10" selected>10</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
@@ -67,7 +64,11 @@ export default function productHome() {
                     </a>
                 </div>
             </div>
-            <ProductTable datas={productPerPage}></ProductTable>
+            {
+                productTotal > 0 
+                    ? <ProductTable datas={productPerPage}></ProductTable> 
+                    : <h2 className="text-center my-5">-ไม่พบรายการ-</h2>
+            }
         </div>
     );
 }

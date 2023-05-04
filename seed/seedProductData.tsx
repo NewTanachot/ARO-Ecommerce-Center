@@ -1,4 +1,4 @@
-import IProductTableBody from "../Types&Interfaces/IProductTableData";
+import IProductTableBody from "../Types&Interfaces/product/IProductTableData";
 
 const tableData : IProductTableBody[] = [
     {
