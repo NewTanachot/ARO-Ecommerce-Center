@@ -1,7 +1,15 @@
+import Image from "next/image"
+import AROlogo from "../public/image/AROlogo.png"
+
 export default function home() {
-  return (
-    <div className='p-2 pe-4'>
-        <h1>This is Home. </h1>
-    </div>
-  )
+    return (
+      <div className="text-center my-5">
+          <Image 
+            src={AROlogo.src} 
+            alt="ARO logo" 
+            width={600} 
+            height={250}
+          ></Image>
+      </div>
+    )
 }

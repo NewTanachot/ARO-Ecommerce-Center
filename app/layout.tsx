@@ -5,6 +5,7 @@ import NavBar from '../component/navbar/navbar'
 import SideBar from '../component/sidebar/sidebar'
 import Icon from '../public/image/favicon.ico'
 import { Athiti } from 'next/font/google' // Sriracha, Itim, Kanit, Sarabun, Mali, Noto_Sans_Thai, Noto_Sans_Thai_Looped, 
+import Footer from '../component/footer/footer'
 
 const googleFont = Athiti({
     weight: '600',
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode}) {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </body>
     </html>
   )
