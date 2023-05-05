@@ -32,8 +32,12 @@ export default function OrderHome() {
                                Filter
                             </div>
                             <div className="col-7 p-0">
-                                <select className="form-select form-select-sm" onChange={changeFilter}>
-                                    <option value="All" selected>All</option>
+                                <select 
+                                    className="form-select form-select-sm" 
+                                    defaultValue="All" 
+                                    onChange={changeFilter}
+                                >
+                                    <option value="All">All</option>
                                     <option value="Website">Website</option>
                                     <option value="Shopee">Shopee</option>
                                     <option value="Lazada">Lazada</option>
@@ -49,7 +53,7 @@ export default function OrderHome() {
             </div>
             {
                 FilterData.length > 0 
-                    ? FilterData?.map(data => <OrderList key={data.orderId} data={data}></OrderList>) 
+                    ? FilterData?.map((data, index) => <OrderList key={index} data={data}></OrderList>) 
                     : <h2 className="text-center">-ไม่พบรายการ-</h2>
             }
         </>

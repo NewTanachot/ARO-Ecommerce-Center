@@ -20,7 +20,7 @@ export default function productTable({datas} : IProductTableProps) {
                     </thead>
                     <tbody className="text-center">
                         { 
-                            datas.map(data => <ProductTableBody key={data.productSku} data={data}></ProductTableBody>) 
+                            datas.map((data, index) => <ProductTableBody key={index} data={data}></ProductTableBody>) 
                         }
                     </tbody>
                 </table>

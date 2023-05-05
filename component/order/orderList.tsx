@@ -9,8 +9,8 @@ export default function orderList({ data } : IOrderListProps) {
                 </div>
                 <div className="col text-center">
                     { 
-                        data.orderProduct.map(product => 
-                            <div className="row">
+                        data.orderProduct.map((product, index) => 
+                            <div className="row" key={index}>
                                 <div className="col-8 col-lg-6 text-start p-0">
                                     {product.productSku}
                                 </div>
