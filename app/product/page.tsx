@@ -45,8 +45,12 @@ export default function ProductHome() {
                                 แสดง:
                             </div>
                             <div className="col p-0">
-                                <select className="form-select form-select-sm" onChange={changeProductTotalPerPage}>
-                                    <option value="10" selected>10</option>
+                                <select 
+                                    className="form-select form-select-sm"
+                                    defaultValue="10" 
+                                    onChange={changeProductTotalPerPage}
+                                >
+                                    <option value="10">10</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
                                     <option value="100">100</option>
