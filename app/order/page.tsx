@@ -1,18 +1,30 @@
 'use client';
 
+import IOrderListData from "../../Types&Interfaces/order/IOrderListData";
+import sortEnum from "../../Types&Interfaces/sortEnum";
 import OrderList from "../../component/order/orderList";
 import OrderData from "../../seed/seedOrderListData";
 import React from 'react';
 
 export default function OrderHome() {
 
+    // React useState
     const [filterOrder, setOrderFilter] = React.useState("All");
+    const [sortState, setSortState] = React.useState<sortEnum>("desc")
 
+    // SetState method
     const changeFilter : React.ChangeEventHandler<HTMLSelectElement> = (event) => {
         setOrderFilter(event.currentTarget.value);
     }
 
+    const clickSortState = (event : React.MouseEvent<HTMLButtonElement>) => {
+        OrderData.reverse();
+        sortState === "asc" ? setSortState("desc") : setSortState("asc");
+    } 
+
+    // Business logic
     let FilterData = OrderData;
+
     if (filterOrder !== "All") {
         FilterData = FilterData.filter(data => data.orderFrom === filterOrder);
     }
@@ -25,10 +37,18 @@ export default function OrderHome() {
             </div>
             <div className="my-4 row">
                 <div className="col text-end">
+                    <button 
+                        className='btn btn-lg btn-primary bg-gradient shadow border-0 fw-bold'
+                        onClick={clickSortState}
+                    >
+                        {
+                            sortState === "asc" ? <i className="bi bi-sort-down-alt"></i> : <i className="bi bi-sort-down"></i>
+                        }
+                    </button>
                     <div className="btn btn-lg btn-primary bg-gradient shadow px-4 mx-2 w-25">
                         <div className="row">
                             <div className="col-5 p-0 text-start">
-                                <i className="bi bi-filter-right me-1"></i>
+                                <i className="bi bi-filter me-1"></i>
                                Filter
                             </div>
                             <div className="col-7 p-0">

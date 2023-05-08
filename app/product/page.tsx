@@ -1,18 +1,30 @@
 'use client';
 
+import IProductTableBody from "../../Types&Interfaces/product/IProductTableData";
+import sortEnum from "../../Types&Interfaces/sortEnum";
 import ProductTable from "../../component/product/producttable";
 import ProductData from "../../seed/seedProductData";
 import React from 'react';
 
 export default function ProductHome() {
 
-    const [productTotalPerPage, setProductTotalPerPage] = React.useState(10);
+    // React useState
+    const [productTotalPerPage, setProductTotalPerPage] = React.useState<number>(10);
+    const [sortState, setSortState] = React.useState<sortEnum>("desc")
 
-    const changeProductTotalPerPage : React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-        setProductTotalPerPage(Number(event.currentTarget.value));
+    // SetState method
+    const changeProductTotalPerPage = (event : React.ChangeEvent<HTMLSelectElement>) => {
+        setProductTotalPerPage(Number(event.target.value));
     }
 
+    const clickSortState = (event : React.MouseEvent<HTMLButtonElement>) => {
+        ProductData.reverse();
+        sortState === "asc" ? setSortState("desc") : setSortState("asc");
+    } 
+
+    // Business logic
     let productPerPage = ProductData;
+
     if (productTotalPerPage !== 0) {
         productPerPage = productPerPage.slice(0, productTotalPerPage);
     }
@@ -39,6 +51,14 @@ export default function ProductHome() {
                     </a>
                 </div>
                 <div className="col text-end">
+                    <button 
+                        className='btn btn-lg btn-primary bg-gradient shadow border-0 fw-bold'
+                        onClick={clickSortState}
+                    >
+                        {
+                            sortState === "asc" ? <i className="bi bi-sort-down-alt"></i> : <i className="bi bi-sort-down"></i>
+                        }
+                    </button>
                     <div className="btn btn-lg btn-primary bg-gradient shadow px-4 mx-2 w-50">
                         <div className="row">
                             <div className="col p-0 text-nowrap">

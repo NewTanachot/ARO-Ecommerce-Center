@@ -31,7 +31,7 @@ const orderData : IOrderListData[] = [
         ],
         productQuantity : 1,
         orderFrom : "Tiktok",
-        orderDate : "2023/04/27 | 23.32 น."
+        orderDate : "2023/04/26 | 23.32 น."
     },
     {
         orderId : "0003",
@@ -47,7 +47,7 @@ const orderData : IOrderListData[] = [
         ],
         productQuantity : 1,
         orderFrom : "Lazada",
-        orderDate : "2023/04/27 | 23.32 น."
+        orderDate : "2023/04/25 | 23.32 น."
     },
     {
         orderId : "0001",
@@ -67,7 +67,7 @@ const orderData : IOrderListData[] = [
         ],
         productQuantity : 1,
         orderFrom : "Shopee",
-        orderDate : "2023/04/27 | 23.32 น."
+        orderDate : "2023/04/24 | 23.32 น."
     },
     {
         orderId : "0001",
@@ -79,7 +79,7 @@ const orderData : IOrderListData[] = [
         ],
         productQuantity : 1,
         orderFrom : "Facebook",
-        orderDate : "2023/04/27 | 23.32 น."
+        orderDate : "2023/04/23 | 23.32 น."
     },
 ];
 
