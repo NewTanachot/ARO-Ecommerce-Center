@@ -10,7 +10,7 @@ export default function OrderHome() {
 
     // React useState
     const [filterOrder, setOrderFilter] = React.useState("All");
-    const [sortState, setSortState] = React.useState<sortEnum>("desc")
+    const [sortState, setSortState] = React.useState<sortEnum>("desc");
 
     // SetState method
     const changeFilter : React.ChangeEventHandler<HTMLSelectElement> = (event) => {

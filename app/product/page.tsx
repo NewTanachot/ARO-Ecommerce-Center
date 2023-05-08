@@ -1,6 +1,5 @@
 'use client';
 
-import IProductTableBody from "../../Types&Interfaces/product/IProductTableData";
 import sortEnum from "../../Types&Interfaces/sortEnum";
 import ProductTable from "../../component/product/producttable";
 import ProductData from "../../seed/seedProductData";
@@ -10,7 +9,8 @@ export default function ProductHome() {
 
     // React useState
     const [productTotalPerPage, setProductTotalPerPage] = React.useState<number>(10);
-    const [sortState, setSortState] = React.useState<sortEnum>("desc")
+    const [sortState, setSortState] = React.useState<sortEnum>("desc");
+    const [paginationState, setPaginationState] = React.useState<number>(0); 
 
     // SetState method
     const changeProductTotalPerPage = (event : React.ChangeEvent<HTMLSelectElement>) => {
@@ -22,15 +22,28 @@ export default function ProductHome() {
         sortState === "asc" ? setSortState("desc") : setSortState("asc");
     } 
 
+    const clickNextPage = (event : React.MouseEvent<HTMLButtonElement>) => {
+        if (paginationState !== Math.ceil(productTotal / productTotalPerPage) - 1) {
+            setPaginationState(paginationState + 1);
+        }
+    }
+
+    const clickPreviousPage = (event : React.MouseEvent<HTMLButtonElement>) => {
+        if (paginationState !== 0) {
+            setPaginationState(paginationState - 1);
+        }
+    }
+
     // Business logic
+    const productTotal = ProductData.length;
     let productPerPage = ProductData;
 
     if (productTotalPerPage !== 0) {
-        productPerPage = productPerPage.slice(0, productTotalPerPage);
+
+        const skipPageNumber = paginationState * productTotalPerPage;
+        productPerPage = productPerPage.slice(skipPageNumber, skipPageNumber + productTotalPerPage);
     }
-
-    const productTotal = ProductData.length;
-
+    
     return (
         <div>
             <div className='bg-primary bg-gradient rounded-3 text-center text-light h1 py-2'>
@@ -93,6 +106,22 @@ export default function ProductHome() {
                     ? <ProductTable datas={productPerPage}></ProductTable> 
                     : <h2 className="text-center my-5">-ไม่พบรายการ-</h2>
             }
+            <div className="row mb-4">
+                <div className="col text-end">
+                    <button 
+                        className='btn btn-lg btn-primary bg-gradient shadow-sm border border-primary border-2 fw-bold me-2'
+                        onClick={clickPreviousPage}
+                    >
+                        <i className="bi bi-caret-left-fill"></i>
+                    </button>
+                    <button 
+                        className='btn btn-lg btn-primary bg-gradient shadow-sm border border-primary border-2 fw-bold'
+                        onClick={clickNextPage}
+                    >
+                        <i className="bi bi-caret-right-fill"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }

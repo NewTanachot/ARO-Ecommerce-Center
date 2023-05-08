@@ -3,11 +3,11 @@ import ProductTableBody from "./producttablebody";
 
 export default function productTable({datas} : IProductTableProps) {
     return (
-        <div className="my-4">
+        <div className="mt-4">
             <div className="table-responsive">
                 <table 
                     id='ProductTable' 
-                    className="table table-bordered border-secondary table-striped shadow-sm"
+                    className="table table-bordered border-secondary table-hover shadow-sm"
                 >
                     <thead className="bg-danger bg-gradient text-light border-light">
                         <tr className="text-center">

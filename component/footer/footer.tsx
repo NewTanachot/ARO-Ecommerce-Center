@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function FooterLayout() {
     return (
-        <footer className='bg-secondary bg-opacity-25 px-5'>
+        <footer className='bg-secondary bg-opacity-10 px-5'>
             <span>
                 © 2023 &nbsp;
                 <Link 
