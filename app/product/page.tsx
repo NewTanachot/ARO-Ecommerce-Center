@@ -36,12 +36,12 @@ export default function ProductHome() {
 
     // Business logic
     const productTotal = ProductData.length;
-    let productPerPage = ProductData;
+    let filteredProduct = ProductData;
 
     if (productTotalPerPage !== 0) {
 
         const skipPageNumber = paginationState * productTotalPerPage;
-        productPerPage = productPerPage.slice(skipPageNumber, skipPageNumber + productTotalPerPage);
+        filteredProduct = filteredProduct.slice(skipPageNumber, skipPageNumber + productTotalPerPage);
     }
     
     return (
@@ -103,7 +103,7 @@ export default function ProductHome() {
             </div>
             {
                 productTotal > 0 
-                    ? <ProductTable datas={productPerPage}></ProductTable> 
+                    ? <ProductTable datas={filteredProduct}></ProductTable> 
                     : <h2 className="text-center my-5">-ไม่พบรายการ-</h2>
             }
             <div className="row mb-4">
