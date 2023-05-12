@@ -15,26 +15,26 @@ export default function OrderHome() {
     const [paginationState, setPaginationState] = React.useState<number>(0); 
 
     // SetState method
-    const changeFilter : React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+    const changeFilter = (event: React.ChangeEvent<HTMLSelectElement>): void => {
         setOrderFilter(event.target.value);
     }
 
-    const clickSortState = (event : React.MouseEvent<HTMLButtonElement>) => {
+    const clickSortState = (event: React.MouseEvent<HTMLButtonElement>): void => {
         OrderData.reverse();
         sortState === "asc" ? setSortState("desc") : setSortState("asc");
     }
     
-    const changeOrderTotalPerPage = (event : React.ChangeEvent<HTMLSelectElement>) => {
+    const changeOrderTotalPerPage = (event : React.ChangeEvent<HTMLSelectElement>): void => {
         setOrderTotalPerPage(Number(event.target.value));
     }
 
-    const clickNextPage = (event : React.MouseEvent<HTMLButtonElement>) => {
+    const clickNextPage = (event : React.MouseEvent<HTMLButtonElement>): void => {
         if (paginationState !== Math.ceil(displayOrderNumber / orderTotalPerPage) - 1) {
             setPaginationState(paginationState + 1);
         }
     }
     
-    const clickPreviousPage = (event : React.MouseEvent<HTMLButtonElement>) => {
+    const clickPreviousPage = (event : React.MouseEvent<HTMLButtonElement>): void => {
         if (paginationState !== 0) {
             setPaginationState(paginationState - 1);
         }
@@ -53,8 +53,6 @@ export default function OrderHome() {
         const skipPageNumber = paginationState * orderTotalPerPage;
         filteredOrder = filteredOrder.slice(skipPageNumber, skipPageNumber + orderTotalPerPage);
     }
-
-    const orderTotal = filteredOrder.length;
 
     return (
         <>

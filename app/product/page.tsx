@@ -13,22 +13,22 @@ export default function ProductHome() {
     const [paginationState, setPaginationState] = React.useState<number>(0); 
 
     // SetState method
-    const changeProductTotalPerPage = (event : React.ChangeEvent<HTMLSelectElement>) => {
+    const changeProductTotalPerPage = (event : React.ChangeEvent<HTMLSelectElement>): void => {
         setProductTotalPerPage(Number(event.target.value));
     }
 
-    const clickSortState = (event : React.MouseEvent<HTMLButtonElement>) => {
+    const clickSortState = (event : React.MouseEvent<HTMLButtonElement>): void => {
         ProductData.reverse();
         sortState === "asc" ? setSortState("desc") : setSortState("asc");
     } 
 
-    const clickNextPage = (event : React.MouseEvent<HTMLButtonElement>) => {
+    const clickNextPage = (event : React.MouseEvent<HTMLButtonElement>): void => {
         if (paginationState !== Math.ceil(productTotal / productTotalPerPage) - 1) {
             setPaginationState(paginationState + 1);
         }
     }
 
-    const clickPreviousPage = (event : React.MouseEvent<HTMLButtonElement>) => {
+    const clickPreviousPage = (event : React.MouseEvent<HTMLButtonElement>): void => {
         if (paginationState !== 0) {
             setPaginationState(paginationState - 1);
         }
